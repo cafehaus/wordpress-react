@@ -1,0 +1,38 @@
+.layout-header
+  background #fff
+  box-shadow 0 2px 8px #f0f1f2
+  .content
+    width $design-width
+    height 80px
+    // background pink
+    margin 0 auto
+    // color $blue
+    display flex
+    align-items center
+    justify-content space-between
+    .nav
+      display flex
+      align-items center
+      .logo
+        width 60px
+      .menu
+        margin-left 20px
+        .menu-item
+          display inline-block
+          margin 0 20px
+          padding 8px 0
+          font-size 15px
+          color #666
+          cursor pointer
+          border-bottom 2px solid #FFF
+          &.menu-item-active
+            color $base-color
+            border-color $base-color
+
+    .search
+      :global .ant-input-wrapper
+        input
+          box-shadow none
+          outline none
+        .ant-btn
+          border none
