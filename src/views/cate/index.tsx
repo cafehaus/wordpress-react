@@ -4,8 +4,8 @@
 
 export default function Index() {
     return <>
-        {/* <section className="g-container">
+        <section className="g-container">
             <h3>我是分类页</h3>
-        </section> */}
+        </section>
     </>
 }

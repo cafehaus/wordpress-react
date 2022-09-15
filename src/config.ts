@@ -1,15 +1,16 @@
 
-export const source = 4 // 请求来源：1-web 2-wxmp
-export const isProd = process.env.NODE_ENV === 'production'
+export const source = 1 // 请求来源：1-web 2-wxmp
+export const isProd = import.meta.env.PROD
 
 // 接口地址
 export let api = '/api/'
 let subdomain = location.hostname.split('.')[0]
 switch (subdomain) {
   case '192':
+  case '127':
   case 'localhost':
   case 'dev':
-    api = '/api/'
+    api = '/api-dev/'
     break
   case 'test':
     api = '/api-test/'
@@ -18,7 +19,7 @@ switch (subdomain) {
 
 // 兼容导出方式
 export default {
-  version,
+  source,
   isProd,
   api,
 }

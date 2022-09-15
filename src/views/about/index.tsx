@@ -6,9 +6,9 @@ import { Button, InputNumber } from 'antd'
 
 const Index: React.FC<{}> = () => {
     const navigate = useNavigate()
-    const handleNavigate = () => {
+    const handleNavigate = (num: number) => {
         // -1 返回 0 刷新 1 前进
-        navigate(-1)
+        navigate(num)
     }
 
     const navigateEle = <div style={{ marginBottom: '16px' }}>
@@ -28,11 +28,11 @@ const Index: React.FC<{}> = () => {
     }, [counter])
 
     return <div className="g-container">
-        {/* {navigateEle}
+        {navigateEle}
         <div>
             <InputNumber value={value} onChange={value => setValue(value)} />
             <Button onClick={() => dispatch(setCounter(value))}>立即保存</Button>
-        </div> */}
+        </div>
     </div>
 }
 

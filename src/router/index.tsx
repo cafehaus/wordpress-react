@@ -15,7 +15,8 @@ function renderRoutes(routes: Array<routeType>) {
     }
 
     let res: resType = { ...item }
-    if (!item?.path) return
+    // if (!item?.path) return // 不返回 res, ts 会类型报错，方法返回值为 undefined 了
+    if (!item?.path) return res
 
     // component
     if (item?.component) {

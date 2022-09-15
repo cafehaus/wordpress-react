@@ -19,4 +19,13 @@ export default defineConfig({
       }
     }
   },
+  server: {
+    proxy: {
+      '/api-dev': {
+        target: 'http://192.168.2.5:8088/wp-json/cafe/v1/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api-dev/, '')
+      }
+    }
+  }
 })

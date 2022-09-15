@@ -5,7 +5,7 @@ import http from '@/api/request'
  */
 
 // 获取用户列表
-export const getUserList = (params: { page: number, size: number }) =>  http.get('/users', params)
+export const getUserList = <T>(params: { page: number, size: number }) =>  http.get<T>('/users', params)
 
 // 登录
 export const login = (params: { userName: string, password: string }) =>  http.post('/login', params)

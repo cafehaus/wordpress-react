@@ -1,7 +1,7 @@
 import { axiosTypes, responseTypes } from '@/api/interface'
 import axios, { AxiosRequestConfig, AxiosRequestHeaders } from 'axios'
 import { message } from 'antd'
-import { store } from '@/store'
+import store from '@/store'
 import config from '@/config'
 
 // 请求基础URL
@@ -51,7 +51,7 @@ const requestHandler = <T>(method: 'get' | 'post' | 'put' | 'delete', url: strin
       break
   }
 
-  return new Promise<T>((resolve, reject) => {
+  return new Promise<T>((resolve: any, reject: any) => {
     response.then(res => {
       const data = res.data
       if (data.code !== '200'){
@@ -67,7 +67,7 @@ const requestHandler = <T>(method: 'get' | 'post' | 'put' | 'delete', url: strin
         reject(data)
       }else{
         // resolve 结果
-        resolve(data.data)
+        resolve(data)
       }
 
     }).catch(error => {
