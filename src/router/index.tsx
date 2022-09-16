@@ -3,7 +3,7 @@ import { useRoutes, useNavigate, Navigate } from 'react-router-dom'
 import routes, { routeType } from './routes'
 import { Spin } from 'antd'
 
-export default function Routes() {
+export default function Router() {
   const element = useRoutes(renderRoutes(routes))
   return element
 }
@@ -19,27 +19,34 @@ function renderRoutes(routes: Array<routeType>) {
     if (!item?.path) return res
 
     // component
-    if (item?.component) {
-      const Component = React.lazy(item.component)
-      res.element = (
-        <React.Suspense
-          fallback={
-            <Spin
-              size='large'
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100vh'
-              }}
-            />
-          }
-        >
-          <BeforeEach route={item}>
-            <Component />
-          </BeforeEach>
-        </React.Suspense>
-      )
+    if (item?.element) {
+      // 懒加载会导致每个页面第一次加载的时候出现页面闪烁，为了避免闪烁只在子路由里懒加载
+      const paths: string[] = ['/', '/home', '/cate']
+      const needLazy: boolean = paths.includes(item.path)
+
+      if (needLazy) {
+        const Component = React.lazy(item.element)
+
+        res.element = (
+          <React.Suspense
+            fallback={
+              <Spin
+                size='large'
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: '100vh'
+                }}
+              />
+            }
+          >
+            <BeforeEach route={item}>
+              <Component />
+            </BeforeEach>
+          </React.Suspense>
+        )
+      }
     }
 
     if (item?.children) {

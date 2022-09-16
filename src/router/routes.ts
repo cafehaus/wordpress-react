@@ -1,6 +1,6 @@
 export interface routeType {
   path: string;
-  component?: any;
+  element?: any;
   children?: Array<routeType>;
   meta?: {
     title?: string;
@@ -12,7 +12,7 @@ export interface routeType {
 const routes: Array<routeType> = [
   {
     path: '/',
-    component: () => import('@/layout'),
+    element: () => import('@/layout'),
     children: [
       {
         path: '/',
@@ -20,28 +20,28 @@ const routes: Array<routeType> = [
       },
       {
         path: '/home',
-        component: () => import('@/views/home'),
+        element: () => import('@/views/home'),
         meta: {
           title: '首页',
         },
       },
       {
         path: '/cate',
-        component: () => import('@/views/cate'),
+        element: () => import('@/views/cate'),
         meta: {
           title: '分类',
         },
       },
       {
         path: '/cate/:id',
-        component: () => import('@/views/cate'),
+        element: () => import('@/views/cate'),
         meta: {
           title: '分类带路径参数',
         },
       },
       {
         path: '/about',
-        component: () => import('@/views/about'),
+        element: () => import('@/views/about'),
         meta: {
           title: '关于',
         },
@@ -50,7 +50,7 @@ const routes: Array<routeType> = [
   },
   {
     path: '*',
-    component: () => import('@/components/404'),
+    element: () => import('@/components/404'),
     meta: {
       title: '404',
     },
