@@ -7,7 +7,7 @@ const { Search } = Input
 const LayoutHeader = () => {
   // 跳转
   const navigate = useNavigate()
-  const handleNavigate = (path) => {
+  const handleNavigate = (path: any) => {
     navigate(path)
   }
 

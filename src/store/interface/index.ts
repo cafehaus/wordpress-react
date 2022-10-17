@@ -5,4 +5,5 @@ export interface AppState {
 
 export interface AboutState {
   counter: number;
+  title: string;
 }
